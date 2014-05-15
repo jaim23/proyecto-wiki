@@ -12,6 +12,22 @@
     <parameters>
     </parameters>
   <connection>
+    <name>wikipropia</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>wikitin</database>
+    <port>3306</port>
+    <username>root</username>
+    <password>Encrypted 2be98afc86aa7f2e4ff41f72788caf88d</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>WikiTin</name>
     <server>wikis.uca.es</server>
     <type>MYSQL</type>
@@ -232,8 +248,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>671</xloc>
-      <yloc>62</yloc>
+      <xloc>670</xloc>
+      <yloc>56</yloc>
       </entry>
     <entry>
       <name>TablaTiempo</name>
@@ -298,8 +314,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>970</xloc>
-      <yloc>186</yloc>
+      <xloc>982</xloc>
+      <yloc>193</yloc>
       </entry>
   </entries>
   <hops>
@@ -332,29 +348,11 @@
     </hop>
     <hop>
       <from>User</from>
-      <to>Page</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>User</from>
       <to>Abort job 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Page</from>
-      <to>RecentChanges</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
@@ -403,7 +401,25 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>RecentChanges</from>
+      <from>TablaUser</from>
+      <to>Page</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TablaPages</from>
+      <to>RecentChanges</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TablaTiempo</from>
       <to>TablaHechos</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
