@@ -306,7 +306,7 @@
            </partitioning>
     <connection>WikiPropia</connection>
     <schema/>
-    <table>staginArticulo</table>
+    <table>staginarticulo</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
