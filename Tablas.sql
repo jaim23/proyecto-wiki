@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS tiempo (
 , minutos VARCHAR(100)
 , segundos VARCHAR(100)
 , fecha TINYTEXT
+, hora_completa TINYTEXT
 , PRIMARY KEY (id_tiempo));
 
 commit;
