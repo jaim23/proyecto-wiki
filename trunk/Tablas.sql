@@ -12,6 +12,11 @@ CREATE TABLE IF NOT EXISTS tiempo (
 
 commit;
 
+CREATE TABLE IF NOT EXISTS wiki(
+  Nombre VARCHAR(255)
+, id_wiki INT
+, PRIMARY KEY (id_wiki));
+
 CREATE TABLE IF NOT EXISTS usuario (
   Nombre_usuario VARCHAR(255)
 , Nombre_real VARCHAR(255)
@@ -32,14 +37,16 @@ CREATE TABLE IF NOT EXISTS staginarticulo (
 , page_title VARCHAR(255)
 , page_counter BIGINT
 , id INT
-, PRIMARY KEY (id));
+, wiki VARCHAR(10)
+, PRIMARY KEY (page_id,wiki));
 commit;
 
 CREATE TABLE IF NOT EXISTS staginuser (
   user_id INT
 , user_name VARCHAR(255)
 , nuevo_id INT
-, PRIMARY KEY (nuevo_id));
+, wiki VARCHAR(10)
+, PRIMARY KEY (user_id,wiki));
 
 commit;
 CREATE TABLE IF NOT EXISTS stagintiempo (
@@ -51,7 +58,8 @@ CREATE TABLE IF NOT EXISTS stagintiempo (
 , rc_old_len INT
 , rc_new_len INT
 , id INT
-, PRIMARY KEY (id));  
+, wiki VARCHAR(10)
+, PRIMARY KEY (rc_id,wiki));  
 
 commit;
 CREATE TABLE IF NOT EXISTS hechos (
@@ -59,9 +67,10 @@ CREATE TABLE IF NOT EXISTS hechos (
   id_usuario INT(11) NOT NULL,
   id_articulo INT(11) NOT NULL,
   id_tiempo INT(11) NOT NULL,
+  id_wiki INT(11) NOT NULL,
   num_ediciones BIGINT(20) NULL,
   num_bytes DOUBLE NULL,
-  PRIMARY KEY (id_hecho, id_usuario, id_articulo, id_tiempo),
+  PRIMARY KEY (id_hecho, id_usuario, id_articulo, id_tiempo, id_wiki),
   CONSTRAINT fk_Hechos_Tiempo
     FOREIGN KEY (id_tiempo)
     REFERENCES tiempo (id_tiempo),
@@ -70,6 +79,9 @@ CREATE TABLE IF NOT EXISTS hechos (
     REFERENCES usuario (id_usuario),
   CONSTRAINT fk_Hechos_Articulo
     FOREIGN KEY (id_articulo)
-    REFERENCES articulo (id_articulo));
+    REFERENCES articulo (id_articulo),
+  CONSTRAINT fk_Hechos_wiki
+    FOREIGN KEY (id_wiki)
+    REFERENCES wiki (id_wiki));
 commit;
 
