@@ -72,8 +72,8 @@
     <access>Native</access>
     <database>wikitin</database>
     <port>3306</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4ff41f72788caf88d</password>
+    <username>tin</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10be86a6d4</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -103,7 +103,16 @@
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
     <slaveservers>
@@ -153,6 +162,11 @@
       <description/>
       <type>CHECK_DB_CONNECTIONS</type>
       <connections>
+        <connection>
+          <name>wikipliidb</name>
+          <waitfor>0</waitfor>
+          <waittime>millisecond</waittime>
+        </connection>
         <connection>
           <name>WikiPropia</name>
           <waitfor>0</waitfor>
@@ -398,8 +412,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>329</xloc>
-      <yloc>191</yloc>
+      <xloc>324</xloc>
+      <yloc>192</yloc>
       </entry>
     <entry>
       <name>TablaWiki</name>
@@ -433,6 +447,32 @@
       <nr>0</nr>
       <xloc>907</xloc>
       <yloc>66</yloc>
+      </entry>
+    <entry>
+      <name>SQL</name>
+      <description/>
+      <type>SQL</type>
+      <sql>truncate table staginuser&#x3b;&#xd;&#xa;truncate table stagintiempo&#x3b;&#xd;&#xa;truncate table staginarticulo&#x3b;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>WikiPropia</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>911</xloc>
+      <yloc>327</yloc>
+      </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>999</xloc>
+      <yloc>196</yloc>
       </entry>
   </entries>
   <hops>
@@ -556,6 +596,24 @@
     <hop>
       <from>TablaWiki</from>
       <to>TablaHechos</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>TablaHechos</from>
+      <to>SQL</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>SQL</from>
+      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
